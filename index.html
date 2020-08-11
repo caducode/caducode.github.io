@@ -34,6 +34,19 @@
             }
             .vid-feev{
                 margin:1%;
+                position: relative;
+                overflow: hidden;
+                width: 45%;
+                padding-top: 27.25%;
+            }
+            .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
             }
             
         </style>
@@ -41,28 +54,23 @@
        
     <body>
         <div class="tudo">
-            <div class="mat_basic" style="height: '35px';
-            width: '100%';
-            background-color: 'rgb(97, 214, 93)';
-            font-family:'Open Sans';
-            font-weight: '700';
-            padding-left: '5%';
-            line-height: '2.2';
-            color:'whitesmoke'">
+            <div>
                 <div id="bner_mat_basic">
                     Material Básico
                 </div>
                 <section class="linha">
                     <div class="vid-feev">
-                        <iframe width="380" height="315" src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="responsive-iframe"   src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="vid-feev">
-                        <iframe width="380" height="315" src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="vid-feev centerVid">
-                        <iframe width="380" height="315" src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="responsive-iframe"   src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </section>
+               <!-- <section class="linha">
+                    <div class="vid-feev">
+                        <iframe class="responsive-iframe"   src="https://www.youtube.com/embed/aHwzzSYhHrs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </section> -->
                 <section class="linha">
                     <div class="item">
                         <img src="imgs/LIVRO.png" alt="icone livro">
@@ -94,6 +102,9 @@
                 
                 
             </div>
-        </div>  
+        </div>
+        <script src="funjs.js">
+
+        </script>  
     </body>
 </html>

@@ -3,7 +3,7 @@
         <title>Gerador Material Basico</title>
         <style>
             .tudo{
-                height: 400px;
+                height: 370px;;
                 width: 850px;
                 background-color: lightsteelblue;
 
@@ -26,7 +26,19 @@
     <body>
         <div class="tudo" id="tudoId">
             <section class="flex">
-                <span>nome do link</span> <input type="text" id="feevas_inp_link"  /> 
+                <span>nome do link</span> <input type="text" /> 
+                <select name="feevas_nm_link" id="feevas_nm_link">
+                    <option value="artigo">Artigo</option>
+                    <option value="revista">Revista</option>
+                    <option value="livro">Livro</option>
+                    <option value="apresentacao">Apresentação</option>
+                    <option value ="video">Video</option>
+                </select>
+                <button  onclick="addNovo()">Adicionar Novo</button>
+                <button  onclick="dellEste(this)">Excluir</button>
+            </section>
+            <section class="flex">
+                <span>nome do link</span> <input type="text" /> 
                 <select name="feevas_nm_link" id="feevas_nm_link">
                     <option value="artigo">Artigo</option>
                     <option value="revista">Revista</option>
@@ -39,65 +51,33 @@
             </section>
             
         </div>
+        <div class="geraButton">
+            <button onclick="geraLayout()">Gerar layout</button>
+        </div>
+        <script src="funjs.js"></script>
         <script>
             
             let tudoDiv = document.getElementById("tudoId");
 
-            function addNovo(){
-                
-                
-                let sectionNode = document.createElement("section");
-                sectionNode.setAttribute("class","flex");
-                let btnNode = document.createElement("button");
-                let btnDellNode = document.createElement("button");
-
-                btnNode.textContent = "Adicionar Novo";
-                btnNode.setAttribute("onClick","addNovo()"); 
-                btnDellNode.textContent= "Excluir";
-                btnDellNode.setAttribute("onClick","dellEste(this)");
-
-                let spanNode = document.createElement("span");
-                spanNode.textContent ="nome do link";
-                let inputNode = document.createElement("input");
-                let selectNode = document.createElement("select");
-                let optionNodeArtigo = document.createElement("option");
-                let optionNodeRevista = document.createElement("option");
-                let optionNodeLivro = document.createElement("option");
-                let optionNodeApresentacao = document.createElement("option");
-                let optionNodeVideo = document.createElement("option");
-
-                optionNodeArtigo.textContent=" Artigo ";
-                optionNodeArtigo.setAttribute("value","artigo");
-                optionNodeRevista.textContent=" Revista ";
-                optionNodeRevista.setAttribute("value","revista");
-                optionNodeLivro.textContent = " Livro ";
-                optionNodeLivro.setAttribute("value", "livro");
-                optionNodeApresentacao.textContent=" Apresentação ";
-                optionNodeApresentacao.setAttribute("value", "apresentacao");
-                optionNodeVideo.textContent= " Vídeo ";
-                optionNodeVideo.setAttribute("value", "video");
-
-                selectNode.appendChild(optionNodeArtigo);
-                selectNode.appendChild(optionNodeRevista);
-                selectNode.appendChild(optionNodeLivro);
-                selectNode.appendChild(optionNodeApresentacao);
-                selectNode.appendChild(optionNodeVideo);
-
-                sectionNode.appendChild(spanNode);
-                sectionNode.appendChild(inputNode);
-                sectionNode.appendChild(selectNode);
-                sectionNode.appendChild(btnNode);
-                sectionNode.appendChild(btnDellNode);
+            function geraLayout(){
+                let sectionsNodes = document.getElementsByTagName("section");
+                for(let i = 0; i< sectionsNodes.length; i++){
+                    console.log(sectionsNodes[i].children[1].value);
+                    console.log(sectionsNodes[i].children[2].options[sectionsNodes[i].children[2].selectedIndex].value);
+                }
                 
 
-                tudoDiv.appendChild(sectionNode);
-
+                var htmlTXT = "<div class='tudo'>"+
+                                    "<div>"+
+                                        "<div id='bner_mat_basic'>"+
+                                                "Material Básico"+
+                                    "</div>"+
+                                        "</div>"+    
+                               "</div>";
+                
             }
-            function dellEste(node){
-                let sectionNodeDel =  node.parentNode;
-                tudoDiv.removeChild(sectionNodeDel);
 
-            }
+
         </script>
     </body>
 </html>
