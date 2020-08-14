@@ -4,7 +4,7 @@
         <style>
             .tudo{
                 height: 370px;;
-                width: 850px;
+                width: 900px;
                 background-color: lightsteelblue;
 
             }
@@ -15,18 +15,29 @@
             input{
                 margin: 0 10px;
             }
+            .feevas_checkbox{
+                margin-right:10px;
+            }
+            .url_txt{
+                margin-right: 10px;
+            }
             select{
                 margin-right: 10px;
             }
             button{
                 margin: 0 5px;
             }
+            .displayNone{
+                display: visible;
+            }
         </style>
     </head>
     <body>
         <div class="tudo" id="tudoId">
             <section class="flex">
-                <span>nome do link</span> <input type="text" /> 
+                <span>nome do link</span> <input type="text" />
+                <input type="text"  class="feevas_link_material" />
+                
                 <select name="feevas_nm_link" id="feevas_nm_link">
                     <option value="artigo">Artigo</option>
                     <option value="revista">Revista</option>
@@ -34,18 +45,7 @@
                     <option value="apresentacao">Apresentação</option>
                     <option value ="video">Video</option>
                 </select>
-                <button  onclick="addNovo()">Adicionar Novo</button>
-                <button  onclick="dellEste(this)">Excluir</button>
-            </section>
-            <section class="flex">
-                <span>nome do link</span> <input type="text" /> 
-                <select name="feevas_nm_link" id="feevas_nm_link">
-                    <option value="artigo">Artigo</option>
-                    <option value="revista">Revista</option>
-                    <option value="livro">Livro</option>
-                    <option value="apresentacao">Apresentação</option>
-                    <option value ="video">Video</option>
-                </select>
+                <input type="checkbox"  class="feevas_checkbox"> <span class="url_txt">URL</span> 
                 <button  onclick="addNovo()">Adicionar Novo</button>
                 <button  onclick="dellEste(this)">Excluir</button>
             </section>
@@ -54,6 +54,10 @@
         <div class="geraButton">
             <button onclick="geraLayout()">Gerar layout</button>
         </div>
+        <div id="result">
+
+
+        </div>
         <script src="funjs.js"></script>
         <script>
             
@@ -61,22 +65,24 @@
 
             function geraLayout(){
                 let sectionsNodes = document.getElementsByTagName("section");
+                console.log(sectionsNodes);
+                let arrayItens = new Array();
                 for(let i = 0; i< sectionsNodes.length; i++){
-                    console.log(sectionsNodes[i].children[1].value);
-                    console.log(sectionsNodes[i].children[2].options[sectionsNodes[i].children[2].selectedIndex].value);
+                    arrayItens[i]= new Object();
+                    arrayItens[i].nomeItem = sectionsNodes[i].children[1].value;
+                    arrayItens[i].tipoItem  = sectionsNodes[i].children[3].options[sectionsNodes[i].children[3].selectedIndex].value;
+                    arrayItens[i].usaLink =  sectionsNodes[i].children[4].checked
+                    if(sectionsNodes[i].children[4].checked){
+                        arrayItens[i].linkMaterial = sectionsNodes[i].children[2].value;
+                    }
                 }
+                 
                 
 
-                var htmlTXT = "<div class='tudo'>"+
-                                    "<div>"+
-                                        "<div id='bner_mat_basic'>"+
-                                                "Material Básico"+
-                                    "</div>"+
-                                        "</div>"+    
-                               "</div>";
-                
-            }
-
+               let divRes = document.getElementById("result");
+               divRes.innerText =  geraCode(arrayItens);
+            }    
+            
 
         </script>
     </body>
