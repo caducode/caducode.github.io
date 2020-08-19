@@ -1,9 +1,9 @@
-const pathLivro = "imgs/LIVRO.png";
-const pathRevista = "imgs/REVISTA.png";
-const pathArtigo = "imgs/ARTIGO.png";
-const pathApresentacao = "imgs/APRESENTACAO.png";
-const pathVideo = "imgs/VIDEO.png";
-const pathSite = "imgs/VIDEO.png";
+const pathLivro = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959068_1";
+const pathRevista = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959079_1";
+const pathArtigo = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959065_1";
+const pathApresentacao = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959064_1";
+const pathVideo = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959081_1";
+const pathSite = "https://feevalestaging.blackboard.com/bbcswebdav/xid-4959081_1";
 
 
 function addNovo(){
@@ -81,9 +81,7 @@ function geraCode(arrayMateriais){
     let juntaTudo="";
     let htmlTxtInicio = "<div class='tudo'>"+
                           "<div>"+
-                                "<div id='bner_mat_basic'>"+
-                                    "Material Básico"+
-                                "</div>"+
+                                
                                 "AQUITODOMATERIAL"+
                         "</div>"+    
                         "</div>";
@@ -92,12 +90,12 @@ function geraCode(arrayMateriais){
     }
     juntaTudo = montaVideos(arrayMateriais);
     juntaTudo += montaIcones(arrayMateriais);
-    let novoIndex = htmlTxtInicio.replace("QUITODOMATERIAL",juntaTudo );
+    let novoIndex = htmlTxtInicio.replace("AQUITODOMATERIAL",juntaTudo );
     return novoIndex
 }  
 
 function montaVideos(arrayMat){
-    let linhaVidCont = "<section class='linha'>"+
+    let linhaVidCont = "<section class='feevas_linha'>"+
                          "ITEMDOSVIDEOS" +
                         "</section>";
     let itensVideCont = "";
@@ -107,8 +105,8 @@ function montaVideos(arrayMat){
             var arrayPegaCodigo = urlVideo.split("?v=");
             var codVideoYt = arrayPegaCodigo[1];
 
-            itensVideCont += "<!-- DIV CONTENDO IFRAME DO VIDEO -->  <div class='vid-feev'>"+
-                            "<iframe class='responsive-iframe'   src='https://www.youtube.com/embed/"+codVideoYt+ "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"    
+            itensVideCont += "<!-- DIV CONTENDO IFRAME DO VIDEO -->  <div class='feevas_vid-feev'>"+
+                            "<iframe class='feevas_responsive-iframe' width='100%'  src='https://www.youtube.com/embed/"+codVideoYt+ "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>"    
                             +"</div> <!-- FIM DIV DO IFRAME -->";    
             
         }
@@ -134,12 +132,12 @@ function montaIcones(arrayMat){
         if(arrayMat[i].tipoItem != "video"){
             contador++;
             if(contador == 1 || contador == 3 || contador == 5 || contador == 7 || contador == 9){
-                itensIconeCont+="<section class='linha_icones'>";
+                itensIconeCont+="<section class='feevas_linha_icones'>";
 
             }
-            itensIconeCont+="<div class='item'>"+
+            itensIconeCont+="<div class='feevas_item'>"+
                                 "<img src='"+caminhoIcone(arrayMat[i].tipoItem)+"' alt='icone'>"+
-                                    "<div class='texto_item'>"+
+                                    "<div class='feevas_texto_item'>"+
                                     geraNomeArquivo(arrayMat[i]) +
                                     "</div>"+
                             "</div>";
@@ -183,7 +181,7 @@ function geraNomeArquivo(objMat){
         if(objMat.tipoItem=="artigo"){
             textoMaterial = "Artigo: ";
             if(objMat.usaLink){
-                textoMaterial += "<a href='"+objMat.linkMaterial+"'> "+objMat.nomeItem+" </a>"
+                textoMaterial += "<a href='"+objMat.linkMaterial+"'  target='_blank> "+objMat.nomeItem+" </a>"
             }else{
                 textoMaterial += objMat.nomeItem;
             }
@@ -191,7 +189,7 @@ function geraNomeArquivo(objMat){
         if(objMat.tipoItem=="apresentacao"){
             textoMaterial = "Apresentação: ";
             if(objMat.usaLink){
-                textoMaterial += "<a href='"+objMat.linkMaterial+"'> "+objMat.nomeItem+" </a>"
+                textoMaterial += "<a href='"+objMat.linkMaterial+"'  target='_blank> "+objMat.nomeItem+" </a>"
             }else{
                 textoMaterial += objMat.nomeItem;
             }
@@ -199,7 +197,7 @@ function geraNomeArquivo(objMat){
         if(objMat.tipoItem=="revista"){
             textoMaterial = "Revista: ";
             if(objMat.usaLink){
-                textoMaterial += "<a href='"+objMat.linkMaterial+"'> "+objMat.nomeItem+" </a>"
+                textoMaterial += "<a href='"+objMat.linkMaterial+"'  target='_blank> "+objMat.nomeItem+" </a>"
             }else{
                 textoMaterial += objMat.nomeItem;
             }
@@ -207,7 +205,7 @@ function geraNomeArquivo(objMat){
         if(objMat.tipoItem=="site"){
             textoMaterial = "Revista: ";
             if(objMat.usaLink){
-                textoMaterial += "<a href='"+objMat.linkMaterial+"'> "+objMat.nomeItem+" </a>"
+                textoMaterial += "<a href='"+objMat.linkMaterial+"'  target='_blank > "+objMat.nomeItem+" </a>"
             }else{
                 textoMaterial += objMat.nomeItem;
             }
@@ -215,7 +213,7 @@ function geraNomeArquivo(objMat){
         if(objMat.tipoItem=="livro"){
             textoMaterial = "Livro: ";
             if(objMat.usaLink){
-                textoMaterial += "<a href='"+objMat.linkMaterial+"'> "+objMat.nomeItem+" </a>"
+                textoMaterial += "<a  href='"+objMat.linkMaterial+"' target='_blank'> "+objMat.nomeItem+" </a>"
             }else{
                 textoMaterial += objMat.nomeItem;
             }
